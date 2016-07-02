@@ -1,0 +1,9 @@
+version: '2'
+services:
+  dashil:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    command: sh -c 'ipython notebook --ip 0.0.0.0'

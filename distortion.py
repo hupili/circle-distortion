@@ -1,13 +1,20 @@
 from PIL import Image
 import sys
 
+SIZE_PROCESS = 512
+
 fn_input = sys.argv[1]
 fn_output = sys.argv[2]
 
 rectangle = Image.open(fn_input)
 px_rectangle = rectangle.load()
 
+## Record original size and resize back
+## We process as a square image to smoothize the switching boundaries
+#ow, oh = rectangle.size
+#rectangle = rectangle.resize((SIZE_PROCESS, SIZE_PROCESS))
 rectangle = rectangle.resize((int(rectangle.size[0]/5), int(rectangle.size[1]/5)))
+
 px_rectangle = rectangle.load()
 
 import numpy as np
